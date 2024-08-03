@@ -1,0 +1,20 @@
+extends layouts/LayoutTheme
+include mixins/contact/Contact
+
+
+append variables
+  - 
+    var pageInfo = {
+      pageTitle: 'Contact',
+      pageSubtitle: 'Recent update',
+      meaning: "सम्पर्कः"
+    }
+
+
+append styles  
+
+prepend scripts
+
+
+block content 
+  +Contact

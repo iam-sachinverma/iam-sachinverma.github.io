@@ -1,0 +1,20 @@
+extends layouts/LayoutTheme
+include mixins/services/ServicesSlides
+
+
+append variables
+  - 
+    var pageInfo = {
+      pageTitle: 'Services',
+      pageSubtitle: 'Online & Offline',
+      meaning: "अनुसेवा"
+    }
+
+
+append styles  
+
+prepend scripts
+
+
+block content 
+  +ServicesSlides 

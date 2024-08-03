@@ -1,0 +1,99 @@
+append variables 
+  - 
+    var services = [
+      {
+        image: 'img01.png',
+        title: 'Influencer Marketing',
+        type: 'Individual',
+        desc: 'To make your idea come to life, we dive into a pool of talent and find the right influencer(s) for the task in hand. Leverage powerful influencer partnerships to boost brand visibility, drive engagement, and increase conversions through authentic and relatable content.',
+        year: 100,
+      },
+      {
+        image: 'img02.png',
+        title: 'Web & App Development',
+        type: 'Collective',
+        desc: 'Our technology stack includes the newest technologies such as React.js, Angular.js, Vue.js, Django, PostgreSQL, Python, MongoDB, Node.js, etc. SaaS Apps Development Services, E-commerce Web Apps Development Services, Backend & Node.js Development Services, Front end Development Services, Custom Web Apps Development for Enterprises, Progressive Web Apps Development Services.',
+        year: 2015,
+      },
+      {
+        image: 'img03.png',
+        title: 'Digital Marketing',
+        type: 'Individual',
+        desc: 'Transform your online presence with data-driven digital marketing strategies, SEO, and targeted campaigns designed to maximize ROI and growth.',
+        year: 2015,
+      },
+      {
+        image: 'img05.png',
+        title: 'Branding',
+        type: 'Individual',
+        desc: 'Elevate your brand identity with strategic branding services, from logo design to brand messaging, ensuring a consistent and memorable presence.',
+        year: 2015,
+      },
+      {
+        image: 'img06.png',
+        title: 'Social Media Management',
+        type: 'Individual',
+        desc: 'Optimize your social media strategy with expert management, creative content, and data-driven insights to build a loyal and engaged community.',
+        year: 2015,
+      },
+       {
+        image: 'img04.png',
+        title: 'Content Creation',
+        type: 'Individual',
+        desc: 'Craft compelling, high-quality content that resonates with your audience, enhances brand storytelling, and drives meaningful engagement across all platforms.',
+        year: 2015,
+      },
+    ]
+
+
+mixin Slide(config)
+  .swiper-slide
+    .row.align-items-xl-center
+      .col-lg-5
+        img(src=`${CWD}assets/img/exhibitions/${config.image}` alt="").img-fluid.w-100
+        .position-absolute.top-5.start-5.mt-n1.d-flex.flex-column.align-items-center
+          span.rounded-circle.bg-white.p-2.d-block
+          span.text-white.fw-bold=config.year
+      .col-lg-6.col-xl-5.mt-4.mt-lg-0
+        h1.fw-bolder.mb-3=config.title
+        p.text-warning.fs-3.opacity-75=config.type
+        p.fs-0=config.desc
+        button.btn.btn-link.text-warning.p-0.fs-2
+          span.fw-bolder Details 
+          img(src=`${CWD}assets/img/icons/long-arrow.png` alt="").ms-3
+
+
+mixin ServicesSlides 
+  +Section('container-fluid px-0').py-3.position-relative
+    .position-absolute.w-100.border-dashed-bottom.opacity-25.top-5.z-index-2
+    .container.px-md-5
+      .row.g-0
+        .col-lg-12.pb-6.px-0.mb-lg-0
+          .swiper-container.swiper-theme(data-swiper!={
+            slidesPerView: 1,
+            breakpoints: {
+              576: {
+                slidesPerView: 1.2,
+              },
+            },
+            spaceBetween: 30,
+            grabCursor: true,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            loop: true,
+            loopedSlides: 3,
+            slideToClickedSlide: true,
+            autoplay: {
+              delay: 2000,
+              disableOnInteraction: false,
+            },
+            keyboard: {
+              enabled: true,
+            },
+          })
+            .swiper-wrapper
+              each exhibition in services
+                +Slide(exhibition)
+          .swiper-theme.swiper-pagination.d-flex.mt-4

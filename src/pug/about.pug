@@ -1,0 +1,20 @@
+extends layouts/LayoutTheme
+include mixins/about/OurTeam
+
+
+append variables
+  - 
+    var pageInfo = {
+      pageTitle: 'About',
+      pageSubtitle: 'Our Team',
+      meaning: "वयम्"
+    }
+
+
+append styles  
+
+prepend scripts
+
+
+block content 
+  +OurTeam
